@@ -20,6 +20,7 @@ import { Link } from "@inertiajs/vue3";
             "
         >
             <Link href="/" style="color: #111; text-decoration: none">Home</Link>
+            
             <Link href="/about" style="color: #111; text-decoration: none"
                 >About</Link
             >
@@ -28,7 +29,7 @@ import { Link } from "@inertiajs/vue3";
             >
         </nav>
 
-    
+
         <main style="padding: 0 20px">
             <slot />
         </main>
