@@ -1,19 +1,29 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return inertia::render('Home');
+    return Inertia::render('Home');
 });
 
-//about page route inertia helper
-Route::get('/about',function(){
+Route::get('/about', function () {
     return inertia('About');
 });
 
-//rout inertia
-Route::inertia('user','Users',['username'=>'yasmeen']);
+Route::inertia('user', 'Users', ['username' => 'yasmeen']);
 
-Route::get('/profile',[UserController::class,'index']);
+/*
+    GET  → يعرض الصفحة (اسمها string: Auth/Register)
+    POST → يبعت البيانات للـ Controller
+
+    مهم:
+    Route::inertia() بتاخد اسم الصفحة كنص بس
+    مش Controller ولا function
+*/
+Route::get('/register', [AuthController::class, 'create']);
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/profile', [UserController::class, 'index']);
